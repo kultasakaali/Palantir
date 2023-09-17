@@ -1,0 +1,53 @@
+{
+  "join_messages": [
+    "Are you ready to die?",
+    "My servants can smell your blood.",
+    "Fool! You are already dead!",
+    "Welcome my servants, my slaves!",
+    "I have awaited you!"
+  ],
+
+  "leave_messages": [
+    "You have played this game too long, mortal.",
+    "The hurlyburly is done. The battle is lost and won.",
+    "I will not suffer your insolence anymore!",
+    "The Elder Gods are pleased with your offering.",
+    "Don't leave, there are warriors to defeat!",
+    "Beat it -- This is turning into a bloodbath!",
+    "I wouldn't leave if I were you. The world is much worse.",
+    "You're trying to say you like the world better than me?",
+    "You know, next time you come in here I'm gonna toast you.",
+    "Go ahead and leave. See if I care.",
+    "Lucky you, killed by the best!"
+  ],
+
+  "memes": [
+    "We need to talk about Dave...",
+    "Bones. When?",
+    "It's d00lz time!!!",
+    "No, Baccohax, NOOOOO!",
+    "Airplane!",
+    "LavaFalls.exe has stopped working.\nLava will stop flowing.\nThank you Zandronum.",
+    "Not enough people to start the dance!",
+    "The crosshair is what you LOOK at",
+    "Hi there! Would you like to sign my petition?",
+    "This channel has worked 0 days without an EoA mention",
+    "Free BOB!",
+    "Who presses 6 for lightning gun!?",
+    ":blueberries:",
+    "I'm going to suggest DOOM ETERNAL PISTOL in #general",
+    "Heisen... this is the 7th week in a row you've\nsuggested Master Chief for QC:DE"
+  ],
+
+  "thumbnail": {
+    "active": "https://dub06pap001files.storage.live.com/y4mX6YxGNrcOK72K1NmiK4rC7VR6Uyota49VHhgohlV2FzqXddFmmPwK-pgLKFYthr9j7R1ZngNqWaf6ikuQdsqpeTolEFQfdICDNts78WPjJ_SgU_WtIkwmvrich6lmgDBjYPLgVVcd_O9s-rG43W-KEDthqGf3cmykFl8VB6bRnDs0r6IVa5Ly8ugz-dxVMxt?width=122&height=124&cropmode=none",
+    "inactive": "https://dub06pap001files.storage.live.com/y4mutDgT_PSZYNWHxuihCLOIIQjyV1-AIeajKAENwKQu4XoXron2G1KJs6RGVUAsU7MdxFhBHxSPIZT0gW77SbB3zeRIml6LHJJ6ve27NmKuj47KcrG-vG8V1WYAStz6yVFirQqQfT1C7A-nMzRpBbylBJbBbplYdw-6XdPJAkpCV737UZsgTSLeayBnQbWNkGI?width=88&height=126&cropmode=none",
+    "ded": "https://dub06pap001files.storage.live.com/y4mFZCTC6O-2un_GfRMr8aIXHRoJAfbpD9VrR0Q_5ypEGtIXvFcfbplnaDvUbK9CDup8dHgIUvuepzWu95fDpkFHRkZffq0bWvCzWm_VxWMYLnW4oMs-_AjlguoviHGjwTA4m2HEghgF6RN-sOuOu12nbCInJ_cp9f0fzz0UPDDutdAzVyufRV7xLKPf-wWNo52?width=148&height=86&cropmode=none",
+    "memes": [
+      "https://dub06pap001files.storage.live.com/y4mysRaOnYCA_ZFkTlNKWU1vWWjZpa7_bFAscb3H4_Lv3XjooiMRwpumkH8F9f4OtiSIVtrlfhQ8I9R4fgU-H3OEYEfx-t4oFeDLon3y0r214WOCPHq_xDpKo-FmJJd3p2jHiEoavb8mXZ5OLeTEKE67gNPSCuPka-QHT3NN0MvyAtmS2IMF0kzpjjLFtTOMNHe?width=133&height=130&cropmode=none",
+      "https://onedrive.live.com/embed?resid=39DFD994F25578B8%21302156&authkey=%21ANLmLoUAzBkZmv4&width=133&height=137"
+    ]
+  },
+  
+  "icon": "https://dub06pap001files.storage.live.com/y4m5y_cZgD777X_BCabPhtO7ZKxAsK4w-fyRiT0Lh6tEpkta6fG4VdGIdD7eRQ7nFN3hxP_7SvGb8AmMqDiZR8Yl34wn9SZxnQZ6nb3aHbaOCefINs7x0F3BV-Q055CIbN804c247wfb6VbSTrsMSch18HavqjKs4h-Bcmkz7wUk-Jlg_ZFwZ7djUuzx9sTW8wZ?width=128&height=128&cropmode=none"
+}
