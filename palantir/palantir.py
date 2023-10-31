@@ -75,6 +75,7 @@ class Palantir(commands.Cog):
 
         self.active_servers = []
         self.serverlist_cache = []
+        self.fail_counter = 0
 
         self.sched_task.start()
 
@@ -121,9 +122,15 @@ class Palantir(commands.Cog):
         try:
             server_addresses = pyzandro.query_master('master.qzandronum.com:15300')
             self.serverlist_cache = server_addresses
+            self.fail_counter = 0
         except PyZandroException:
             logger.info("The master server did not respond. Working from cache.")
             server_addresses = self.serverlist_cache
+            self.fail_counter += 1
+        except TimeoutError:
+            logger.info("Request to the master server timed out. Working from cache.")
+            server_addresses = self.serverlist_cache
+            self.fail_counter += 1
 
         qcde_serverdata = []
 
@@ -227,24 +234,31 @@ class Palantir(commands.Cog):
         except Exception:
             logger.exception("Palantir error")
 
-        if len(embed.fields) == 0:
-            if random.randrange(10) == 0:
-                field_value = random.choice(self.config_external["memes"])
-            else:
-                field_value = "​"
+        if self.fail_counter > 5:
+            embed.set_thumbnail(url = self.config_external['thumbnail']['ded'])
+            embed.color = 0x222222
+            embed.add_field(name = "Service currently unavailable",
+                value = "We are studying the ancient codex")
 
-            if random.randrange(50) == 0:
-                thumbnail = random.choice(self.config_external['thumbnail']['memes'])
-            else:
-                thumbnail = self.config_external['thumbnail']['inactive']
-
-            embed.set_thumbnail(url = thumbnail)
-            embed.color = 0xa51d2d
-            embed.add_field(name = "The eternal halls are empty",
-                value = field_value)
         else:
-            embed.color = 0x1fa51d
-            embed.set_thumbnail(url = self.config_external['thumbnail']['active'])
+            if len(embed.fields) == 0:
+                if random.randrange(10) == 0:
+                    field_value = random.choice(self.config_external["memes"])
+                else:
+                    field_value = "​"
+    
+                if random.randrange(50) == 0:
+                    thumbnail = random.choice(self.config_external['thumbnail']['memes'])
+                else:
+                    thumbnail = self.config_external['thumbnail']['inactive']
+    
+                embed.set_thumbnail(url = thumbnail)
+                embed.color = 0xa51d2d
+                embed.add_field(name = "The eternal halls are empty",
+                    value = field_value)
+            else:
+                embed.color = 0x1fa51d
+                embed.set_thumbnail(url = self.config_external['thumbnail']['active'])
 
         embed.set_footer(text = "Last updated")
         embed.timestamp = datetime.now(timezone.utc)
