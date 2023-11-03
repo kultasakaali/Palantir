@@ -643,10 +643,14 @@ class Palantir(commands.Cog):
 
         expr = " ".join(exprs)
         try:
-            if expr.startswith('await '):
-                result = await eval(expr[6:])
-            else:
-                result = eval(expr)
+            try:
+                if expr.startswith('await '):
+                    result = await eval(expr[6:])
+                else:
+                    result = eval(expr)
+            except SyntaxError:
+                exec(expr)
+                result = "Executed statement: " + repr(expr)
             await ctx.send(f"```\n{pprint.pformat(result)}\n```")
         except:
             exc_type, exc_value, exc_traceback = sys.exc_info()
