@@ -1,6 +1,6 @@
 # Palantir
 
-Palantir is an unofficial, highly customizable custom cog for [Red](https://github.com/Cog-Creators/Red-DiscordBot) that's primary task is to monitor Zandronum/Q-Zandronum servers for player activity.  
+Palantir is an unofficial, highly customizable cog for [Red](https://github.com/Cog-Creators/Red-DiscordBot) that's primary task is to monitor Zandronum/Q-Zandronum servers for player activity.  
 The cog uses Klaufir's [pyzandro](https://github.com/klaufir216/pyzandro) library to communicate with the master server and the individual game servers.  
 
 Palantir currently only supports monitoring QC:Doom Edition servers, this will change in the future and it will be customizeable for each individual Discord guild the cog is used in.  
