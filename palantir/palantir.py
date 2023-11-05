@@ -287,6 +287,8 @@ class Palantir(commands.Cog):
             except discord.Forbidden:
                 if config_data['bot_config_channel'] != 0:
                     await config_channel.send("Palantir error: `No permission to edit message`")
+            except discord.DiscordServerError as e:
+                logger.error(e)
 
 
     async def ping_subscribers(self):
