@@ -124,11 +124,11 @@ class Palantir(commands.Cog):
             self.serverlist_cache = server_addresses
             self.fail_counter = 0
         except PyZandroException:
-            logger.info("The master server did not respond. Working from cache.")
+            logger.warning("The master server did not respond. Working from cache.")
             server_addresses = self.serverlist_cache
             self.fail_counter += 1
         except TimeoutError:
-            logger.info("Request to the master server timed out. Working from cache.")
+            logger.warning("Request to the master server timed out. Working from cache.")
             server_addresses = self.serverlist_cache
             self.fail_counter += 1
 
