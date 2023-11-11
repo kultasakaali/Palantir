@@ -115,6 +115,8 @@ class Palantir(commands.Cog):
 
             await self.update_embed(qcde_servers)
             await self.bot.change_presence(activity = discord.Game(f"QC:DE: {total_players} online"))
+        except ConnectionResetError as e:
+            logger.error(f"Could not update bot status: {e}")
         except Exception:
             logger.exception("sched_task exception")
 
@@ -278,6 +280,8 @@ class Palantir(commands.Cog):
             except AttributeError:
                 logger.error("Couldn't fetch embed for %s, channel is None", self.bot.get_guild(guild_id).name)
                 continue
+            except discord.DiscordServerError as e:
+                logger.error(f"Could not retrieve embed to be edited for {self.bot.get_guild(guild_id).name}: {e}")
 
             if config_data['bot_config_channel'] != 0:
                 config_channel = self.bot.get_channel(config_data['bot_config_channel'])
@@ -288,7 +292,7 @@ class Palantir(commands.Cog):
                 if config_data['bot_config_channel'] != 0:
                     await config_channel.send("Palantir error: `No permission to edit message`")
             except discord.DiscordServerError as e:
-                logger.error(e)
+                logger.error(f"Could not edit the embed for {self.bot.get_guild(guild_id).name}: {e}")
 
 
     async def ping_subscribers(self):
