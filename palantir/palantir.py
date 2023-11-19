@@ -21,7 +21,7 @@ import pyzandro
 from pyzandro import PyZandroException
 from pyzandro.server import SQF
 
-from .geoiphelper import query_geoip
+from .geoiphelper import GeoIpHelperException, query_geoip
 
 #TODO: implement notification policies
 #TODO: cleanup
@@ -227,10 +227,16 @@ class Palantir(commands.Cog):
                 player_list_formatted = ', '.join(player_list)
 
                 server_address = str(server['address']).split(":")
-                country = query_geoip(server_address[0])
+                server_country_flag = ""
+
+                try:
+                    country = query_geoip(server_address[0])
+                    server_country_flag = f":flag_{country.lower()}:"
+                except GeoIpHelperException as e:
+                    logger.warning(f"Error retrieving server country: {e}")
 
                 if playernum > 0:
-                    embed.add_field(name = f":flag_{country.lower()}: {locked} {server['name_nocolor']} - [{server['mapname']}]",
+                    embed.add_field(name = f"{server_country_flag} {locked} {server['name_nocolor']} - [{server['mapname']}]",
                         value = f"{indicator} Players [{playernum}]: {player_list_formatted}", inline = False)
 
         except Exception:
