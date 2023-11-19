@@ -21,7 +21,7 @@ import pyzandro
 from pyzandro import PyZandroException
 from pyzandro.server import SQF
 
-from .ezgeoip import query_geoip
+from .geoiphelper import query_geoip
 
 #TODO: implement notification policies
 #TODO: cleanup
