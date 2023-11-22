@@ -56,6 +56,6 @@ Consult the built-in help for further info on commands.
 
 # Credits
 
-- Special thanks to [Klaufir](https://github.com/klaufir216) for helping me on my journey to learn Python and providing assistance with the project
+- Special thanks to [Klaufir](https://github.com/klaufir216) for helping me on my journey to learn Python and providing assistance with the project and coming up with the name for the cog
 - Thanks to [Pixo](https://github.com/GavinPixoLee) for a PoC
 - Thanks to [Vexed](https://github.com/Vexed01) for an [example](https://github.com/Vexed01/Vex-Cogs/tree/master/fivemstatus) I could learn a lot from
