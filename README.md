@@ -10,8 +10,10 @@ Palantir currently only supports monitoring QC:Doom Edition servers, this will c
 The cog is currently under development and thus not applied for approvement as an official cog. For this reason it can't be installed from Discord.  
 Place the `palantir` folder in your cog folder (default: `~/.local/share/Red-DiscordBot/data/Red/cogs/CogManager/cogs`) and load it by issuing the `[p]load palantir` command to your RedBot.
 
-## Create cron job for updating GeoIP database
+## Create cron job for updating GeoIP database (optional)
 
+*You may skip this step if you do not wish to display servers' country flags in the server list.*
+  
 Palantir looks for a `GeoLite2-Country.mmdb` file at the following locations:
 
 - `$GEOIP_PATH`
