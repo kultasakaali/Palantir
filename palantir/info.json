@@ -7,7 +7,7 @@
     "tags" : ["zandronum", "qcde", "server", "player"],
     "permissions" : ["manage_messages", "embed_links"],
     "requirements" : ["maxminddb", "git+https://github.com/klaufir216/pyzandro/"],
-    "min_python_version" : "3.6",
+    "min_python_version" : [3, 8, 1],
     "min_bot_version" : "3.5.1",
     "end_user_data_statement": "This cog does not store any user data."
 } 
