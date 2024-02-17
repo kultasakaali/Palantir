@@ -146,6 +146,9 @@ class Palantir(commands.Cog):
                         server_info['address'] = server
                         qcde_serverdata.append(server_info)
                         break
+            except PyZandroException as e:
+                logger.error(f"Game server on {server} did not respond: {e}")
+                continue
             except TimeoutError:
                 server_info['name_nocolor'] = "Connection timeout..."
             except ConnectionResetError:
