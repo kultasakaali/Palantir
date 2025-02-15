@@ -139,7 +139,7 @@ class Palantir(commands.Cog):
         for server in server_addresses:
             try:
                 server_info = {}
-                server_info = pyzandro.query_server(server, flags = [SQF.NAME, SQF.MAPNAME, SQF.NUMPLAYERS, SQF.PLAYERDATA, SQF.GAMETYPE, SQF.PWADS, SQF.FORCEPASSWORD])
+                server_info = pyzandro.query_server(server, flags = [SQF.NAME, SQF.MAPNAME, SQF.NUMPLAYERS, SQF.PLAYERDATA, SQF.GAMETYPE, SQF.PWADS, SQF.FORCEPASSWORD, SQF.FORCEJOINPASSWORD])
                 for wad_bytes in server_info['pwads']:
                     wad = str(wad_bytes, 'utf-8')
                     if ("qcdev" in wad.lower()):
@@ -221,7 +221,7 @@ class Palantir(commands.Cog):
                 else:
                     indicator = ":black_circle:"
 
-                if server['forcepassword'] == True:
+                if server['forcepassword'] == True or server['forcejoinpassword'] == True:
                     locked = ":lock:"
                 else:
                     locked = ""
@@ -291,6 +291,7 @@ class Palantir(commands.Cog):
                 continue
             except discord.DiscordServerError as e:
                 logger.error(f"Could not retrieve embed to be edited for {self.bot.get_guild(guild_id).name}: {e}")
+                continue
 
             if config_data['bot_config_channel'] != 0:
                 config_channel = self.bot.get_channel(config_data['bot_config_channel'])
