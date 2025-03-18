@@ -292,6 +292,9 @@ class Palantir(commands.Cog):
             except discord.DiscordServerError as e:
                 logger.error(f"Could not retrieve embed to be edited for {self.bot.get_guild(guild_id).name}: {e}")
                 continue
+            except discord.NotFound as e:
+                logger.error(f"Could not found embed for {self.bot.get_guild(guild_id).name}: {e}")
+                continue
 
             if config_data['bot_config_channel'] != 0:
                 config_channel = self.bot.get_channel(config_data['bot_config_channel'])
