@@ -122,7 +122,7 @@ class Palantir(commands.Cog):
 
     async def scan_servers(self) -> list:
         try:
-            server_addresses = pyzandro.query_master('master.qzandronum.com:15300')
+            server_addresses = await asyncio.to_thread(pyzandro.query_master, 'master.qzandronum.com:15300')
             self.serverlist_cache = server_addresses
             self.fail_counter = 0
         except PyZandroException:
@@ -139,7 +139,7 @@ class Palantir(commands.Cog):
         for server in server_addresses:
             try:
                 server_info = {}
-                server_info = pyzandro.query_server(server, flags = [SQF.NAME, SQF.MAPNAME, SQF.NUMPLAYERS, SQF.PLAYERDATA, SQF.GAMETYPE, SQF.PWADS, SQF.FORCEPASSWORD, SQF.FORCEJOINPASSWORD])
+                server_info = await asyncio.to_thread(pyzandro.query_server, server, flags = [SQF.NAME, SQF.MAPNAME, SQF.NUMPLAYERS, SQF.PLAYERDATA, SQF.GAMETYPE, SQF.PWADS, SQF.FORCEPASSWORD, SQF.FORCEJOINPASSWORD])
                 for wad_bytes in server_info['pwads']:
                     wad = str(wad_bytes, 'utf-8')
                     if ("qcdev" in wad.lower()):
@@ -176,8 +176,8 @@ class Palantir(commands.Cog):
                 active_servers.append(address)
                 logger.info("%-20s %-25s %s", "Player activity on", address, serverinfo['name_nocolor'])
 
-                if len(active_servers) == 1:
-                    await self.ping_subscribers()
+                #if len(active_servers) == 1:
+                    #await self.ping_subscribers()
 
             if num_players < 1 and address in active_servers:
                 active_servers.remove(address)
