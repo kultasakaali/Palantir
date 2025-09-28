@@ -82,6 +82,8 @@ class Palantir(commands.Cog):
 
 
     def cog_unload(self):
+        global file_handler, console_handler
+
         self.sched_task.cancel()
         
         logger.info("Palantir unloaded")
