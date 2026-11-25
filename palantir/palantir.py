@@ -81,7 +81,7 @@ class Palantir(commands.Cog):
 
 
 
-    def cog_unload(self):
+    async def cog_unload(self):
         global file_handler, console_handler
 
         self.sched_task.cancel()
@@ -137,10 +137,10 @@ class Palantir(commands.Cog):
             self.fail_counter += 1
 
         qcde_serverdata = []
+        server_info = {}
 
         for server in server_addresses:
             try:
-                server_info = {}
                 server_info = await asyncio.to_thread(pyzandro.query_server, server, flags = [SQF.NAME, SQF.MAPNAME, SQF.NUMPLAYERS, SQF.PLAYERDATA, SQF.GAMETYPE, SQF.PWADS, SQF.FORCEPASSWORD, SQF.FORCEJOINPASSWORD])
                 for wad_bytes in server_info['pwads']:
                     wad = str(wad_bytes, 'utf-8')
@@ -192,7 +192,7 @@ class Palantir(commands.Cog):
         leftover_servers = set(active_servers) - set(addresses_from_master)
         for leftover_address in leftover_servers:
             active_servers.remove(leftover_address)
-            logger.info("%-20s %s", "Leftover server", address)
+            logger.info("%-20s %s", "Leftover server", leftover_address)
 
         return total_players
 
@@ -308,6 +308,8 @@ class Palantir(commands.Cog):
                     await config_channel.send("Palantir error: `No permission to edit message`")
             except discord.DiscordServerError as e:
                 logger.error(f"Could not edit the embed for {self.bot.get_guild(guild_id).name}: {e}")
+            except ConnectionResetError as e:
+                logger.error(f"Could not edit the embed for {self.bot.get_guild(guild_id).name}: {e}")
 
 
     async def ping_subscribers(self):
@@ -317,7 +319,7 @@ class Palantir(commands.Cog):
 
         for guild_id, config_data in all_configs.items():
 
-            guild_obj = self.bot.get_guild(guild_id)
+            guild_obj: discord.Guild = self.bot.get_guild(guild_id)
             channel = self.bot.get_channel(config_data['channel_id'])
 
             if config_data['role_to_notify'] == 0:
@@ -410,10 +412,10 @@ class Palantir(commands.Cog):
         all_configs = await self.config.all_guilds()
 
         if len(all_configs) == 0:
-            ctx.send("It seems you don't have anything set up yet.")
+            await ctx.send("It seems you don't have anything set up yet.")
 
         if guildID not in all_configs:
-            ctx.send("It seems you have no embed set up for this guild.")
+            await ctx.send("It seems you have no embed set up for this guild.")
 
         for guild_id, config_data in all_configs.items():
             if guild_id == guildID:
